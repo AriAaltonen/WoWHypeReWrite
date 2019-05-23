@@ -105,7 +105,7 @@ async def on_message(message):
     elif message.content.lower() == '!clear' and message.author.id == "114689178028998657":
         tmp = await client.message.channel.send('Clearing messages...')
         async for msg in client.logs_from(message.channel):
-            await client.(msg)
+            await message.channel.message.delete(msg)
 
 
 @client.event

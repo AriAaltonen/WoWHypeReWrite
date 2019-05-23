@@ -7,27 +7,20 @@ client = discord.Client()
 
 command_list_dict = {
     "!hello": "Greets the user.",
-    "!commands": "displays available commands",
-    "!release": "displays time to release",
-    "!wowhead search query": "to search classic wowhead",
-    "!classic": "for a link to classic guides",
-    "!talents": "for a link to talent calculators",
-    "!map": "for a high resolution map of classic wow",
-    "!classicresources": "for a extensive list of classic resources",
-    "!wowmusic": "for a link to wow soundtrack",
-    "!reddit": "for a link to classicwow subreddit",
-    "!streams": "for a list of wow streams",
-    "!duckit search query": "to display search results from DuckDuckGo",
-    "!groovy": "for help regarding groovy"
+    "!commands": "Embeds this view to channel",
+    "!release": "Posts the time to classic release",
+    "!wowhead search query": "Searches WoWHead for your search query",
+    "!classic": "Posts a link to classic guides",
+    "!talents": "Posts  a link to classic talent calculators",
+    "!map": "Posts a link to a high resolution map of classic wow",
+    "!classicresources": "Posts a link to an extensive list of classic resources",
+    "!wowmusic": "Postsa link to a wow soundtrack",
+    "!reddit": "Posts a link to the classicwow subreddit",
+    "!streams": "Posts url to a list of wow streams on twitch",
+    "!duckit search query": "Search DuckDuckGo for your search query",
+    "!groovy": "Posts a help message regarding groovy"
     }
-command_list = ["!hello", "!commands - displays available commands", "!release - displays time to release",
-                "!wowhead search query - to search classic wowhead", "!classic - for a link to classic guides",
-                "!talents - for a link to talent calculators", "!map - for a high resolution map of classic wow",
-                "!classicresources - for a extensive list of classic resources",
-                "!wowmusic - for a link to wow soundtrack",
-                "!reddit - for a link to classicwow subreddit", "!streams - for a list of wow streams",
-                "!duckit search query - to display search results from DuckDuckGo",
-                "!groovy - for help regarding groovy"]
+
 now = datetime.datetime.now()
 release_date = datetime.datetime(2019, 8, 27)
 time_to_release = f'{release_date.month - now.month} months and {release_date.day - now.day} days to release'
@@ -51,7 +44,7 @@ async def on_message(message):
         author = message.author.mention
         msg = f'Hello {author}, type !commands for available commands.'
         await message.channel.send(msg)
-    elif message.content == "!commands2":
+    elif message.content == "!commands":
         embed = discord.Embed(title="WoWHypeBot's commands", description="Here are all of the WoWHypeBot's commands.")
         for key, val in command_list_dict.items():
             embed.add_field(name=f"{key}", value=f"{val}")
@@ -101,12 +94,6 @@ async def on_message(message):
         await message.channel.send(msg)
     elif message.content.lower() == '!talents':
         msg = "https://classic.wowhead.com/talent-calc"
-        await message.channel.send(msg)
-    elif message.content.lower() == "!commands":
-        list_string = f""
-        for command in command_list:
-            list_string += f'{command}\n'
-        msg = f'List of commands:\n{list_string}'
         await message.channel.send(msg)
     elif message.content.lower() == "!release":
         msg = f'{time_to_release}.'

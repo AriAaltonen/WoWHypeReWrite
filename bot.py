@@ -36,13 +36,13 @@ async def on_message(message):
     if message.content.find('!hello'):
         author = message.author.mention
         msg = f'Hello {author}, type !commands for available commands.'
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content == "!users":
         await message.channel.send(f"""# of Members: {server_id.member_count}""")
     elif message.content.lower() == '!groovy':
         msg = f"-play youtube_link to play a youtube video's audio, -stop to stop playing audio. "\
             f"-help to open groovy help"
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.find('!duckit'):
         keywords = message.content.split()
         kw_string = ""
@@ -51,7 +51,7 @@ async def on_message(message):
             kw_string += f"{keywords[i]}+"
         url = f'{duckduckgo}{kw_string[:-1]}'
         msg = f'{url}'
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.find('!wowhead'):
         keywords = message.content.split()
         kw_string = ""
@@ -60,43 +60,43 @@ async def on_message(message):
             kw_string += f"{keywords[i]}+"
         url = f'https://classic.wowhead.com/search?q={kw_string[:-1]}'
         msg = f'{url}'
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == '!blues':
         msg = f"{blue_tracker}"
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == '!reddit':
         msg = f"{reddit_url}"
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == '!streams':
         msg = f"{wow_streams}"
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == '!wowmusic':
         msg = f"{wow_soundtrack}"
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == '!map':
         msg = f"{wow_map_url}"
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == '!classicresources':
         msg = f"{classic_resources}"
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == '!classic':
         msg = "https://classic.wowhead.com/guides/classic-wow-classes-and-talent-overview"
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == '!talents':
         msg = "https://classic.wowhead.com/talent-calc"
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == "!commands":
         list_string = f""
         for command in command_list:
             list_string += f'{(command)}\n'
         msg = f'List of commands:\n{list_string}'
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == "!release":
         msg = f'{time_to_release}.'
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
     elif message.content.lower() == '!druidguide' and message.author.id == "114689178028998657":
         msg = "https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"
-        await message.channel.send(message.channel, msg)
+        await message.channel.send(msg)
 
 
 @client.event

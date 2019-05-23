@@ -27,35 +27,25 @@ blue_tracker = "https://classic.wowhead.com/bluetracker"
 
 @client.event
 async def on_message(message):
-    id = client.get_guild(ID)
+    server_id = client.get_guild(114689338972831746)
 
     if message.content.find("!hello") != -1:
         await message.channel.send("Hi")
     elif message.content == "!users":
         await message.channel.send(f"""# of Members: {id.member_count}""")
 
-
-@client.event
-async def on_message(message):
-    server_id = client.get_guild(114689338972831746)
-
-    #if message.content.find("!hello") != -1:
-    #    await message.channel.send("Hi")
-    #elif message.content == "!users":
-    #    await message.channel.send(f"""# of Members: {id.member_count}""")
-
     if message.author == client.user:
         return
 
-    if message.content.startswith('!hello'):
+    if message.content.find('!hello'):
         author = message.author.mention
         msg = f'Hello {author}, type !commands for available commands.'
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == '!groovy':
         msg = f"-play youtube_link to play a youtube video's audio, -stop to stop playing audio. "\
             f"-help to open groovy help"
-        await client.send_message(message.channel, msg)
-    elif message.content.startswith('!duckit'):
+        await message.channel.send(message.channel, msg)
+    elif message.content.find('!duckit'):
         keywords = message.content.split()
         kw_string = ""
         length = len(keywords)
@@ -63,8 +53,8 @@ async def on_message(message):
             kw_string += f"{keywords[i]}+"
         url = f'{duckduckgo}{kw_string[:-1]}'
         msg = f'{url}'
-        await client.send_message(message.channel, msg)
-    elif message.content.startswith('!wowhead'):
+        await message.channel.send(message.channel, msg)
+    elif message.content.find('!wowhead'):
         keywords = message.content.split()
         kw_string = ""
         length = len(keywords)
@@ -72,43 +62,44 @@ async def on_message(message):
             kw_string += f"{keywords[i]}+"
         url = f'https://classic.wowhead.com/search?q={kw_string[:-1]}'
         msg = f'{url}'
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == '!blues':
         msg = f"{blue_tracker}"
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == '!reddit':
         msg = f"{reddit_url}"
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == '!streams':
         msg = f"{wow_streams}"
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == '!wowmusic':
         msg = f"{wow_soundtrack}"
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == '!map':
         msg = f"{wow_map_url}"
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == '!classicresources':
         msg = f"{classic_resources}"
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == '!classic':
         msg = "https://classic.wowhead.com/guides/classic-wow-classes-and-talent-overview"
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == '!talents':
         msg = "https://classic.wowhead.com/talent-calc"
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == "!commands":
         list_string = f""
         for command in command_list:
             list_string += f'{(command)}\n'
         msg = f'List of commands:\n{list_string}'
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == "!release":
         msg = f'{time_to_release}.'
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
     elif message.content.lower() == '!druidguide' and message.author.id == "114689178028998657":
         msg = "https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"
-        await client.send_message(message.channel, msg)
+        await message.channel.send(message.channel, msg)
+
 
 @client.event
 async def on_ready():

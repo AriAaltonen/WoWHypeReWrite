@@ -42,7 +42,7 @@ async def on_message(message):
         msg = f"-play youtube_link to play a youtube video's audio, -stop to stop playing audio. "\
             f"-help to open groovy help"
         await message.channel.send(msg)
-    elif message.content == '!duckit':
+    elif message.content.startswith('!duckit'):
         keywords = message.content.split()
         kw_string = ""
         length = len(keywords)
@@ -51,7 +51,7 @@ async def on_message(message):
         url = f'{duckduckgo}{kw_string[:-1]}'
         msg = f'{url}'
         await message.channel.send(msg)
-    elif message.content == '!wowhead':
+    elif message.content.startswith('!wowhead'):
         keywords = message.content.split()
         kw_string = ""
         length = len(keywords)

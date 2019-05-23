@@ -5,6 +5,21 @@ import os
 token = os.environ.get('token')
 client = discord.Client()
 
+command_list_dict = {
+    "!hello": "Greets the user.",
+    "!commands": "displays available commands",
+    "!release": "displays time to release",
+    "!wowhead search query": "to search classic wowhead",
+    "!classic": "for a link to classic guides",
+    "!talents": "for a link to talent calculators",
+    "!map": "for a high resolution map of classic wow",
+    "!classicresources": "for a extensive list of classic resources",
+    "!wowmusic": "for a link to wow soundtrack",
+    "!reddit": "for a link to classicwow subreddit",
+    "!streams": "for a list of wow streams",
+    "!duckit search query": "to display search results from DuckDuckGo",
+    "!groovy": "for help regarding groovy"
+    }
 command_list = ["!hello", "!commands - displays available commands", "!release - displays time to release",
                 "!wowhead search query - to search classic wowhead", "!classic - for a link to classic guides",
                 "!talents - for a link to talent calculators", "!map - for a high resolution map of classic wow",
@@ -36,6 +51,11 @@ async def on_message(message):
         author = message.author.mention
         msg = f'Hello {author}, type !commands for available commands.'
         await message.channel.send(msg)
+    elif message.content == "!commands2":
+        embed = discord.Embed(title="WoWHypeBot's commands", description="Here are all of the WoWHypeBot's commands.")
+        for key, val in command_list_dict.items():
+            embed.add_field(name=f"{key}", value=f"{val}")
+        await message.channel.send(content=None, embed=embed)
     elif message.content.lower() == '!groovy':
         msg = f"-play youtube_link to play a youtube video's audio, -stop to stop playing audio. "\
             f"-help to open groovy help"

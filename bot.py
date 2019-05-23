@@ -29,11 +29,10 @@ blue_tracker = "https://classic.wowhead.com/bluetracker"
 async def on_message(message):
     server_id = client.get_guild(114689338972831746)
 
-    #if message.content.find("!hello") != -1:
     if message.author == client.user:
         return
 
-    if message.content.find('!hello'):
+    if message.content == '!hello':
         author = message.author.mention
         msg = f'Hello {author}, type !commands for available commands.'
         await message.channel.send(msg)
@@ -43,7 +42,7 @@ async def on_message(message):
         msg = f"-play youtube_link to play a youtube video's audio, -stop to stop playing audio. "\
             f"-help to open groovy help"
         await message.channel.send(msg)
-    elif message.content.find('!duckit'):
+    elif message.content == '!duckit':
         keywords = message.content.split()
         kw_string = ""
         length = len(keywords)
@@ -52,7 +51,7 @@ async def on_message(message):
         url = f'{duckduckgo}{kw_string[:-1]}'
         msg = f'{url}'
         await message.channel.send(msg)
-    elif message.content.find('!wowhead'):
+    elif message.content == '!wowhead':
         keywords = message.content.split()
         kw_string = ""
         length = len(keywords)
@@ -88,7 +87,7 @@ async def on_message(message):
     elif message.content.lower() == "!commands":
         list_string = f""
         for command in command_list:
-            list_string += f'{(command)}\n'
+            list_string += f'{command}\n'
         msg = f'List of commands:\n{list_string}'
         await message.channel.send(msg)
     elif message.content.lower() == "!release":

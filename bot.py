@@ -103,7 +103,7 @@ async def on_message(message):
         msg = "https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"
         await message.channel.send(msg)
     elif message.content.lower() == '!clear' and message.author.id == "114689178028998657":
-        await message.channel.purge(25)
+        await message.channel.purge(limit=25)
 
 
 @client.event

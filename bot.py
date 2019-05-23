@@ -11,13 +11,13 @@ command_list_dict = {
     "!release": "Posts the time to classic release",
     "!wowhead search query": "Searches WoWHead for your search query",
     "!classic": "Posts a link to classic guides",
-    "!talents": "Posts  a link to classic talent calculators",
+    "!talents": "Posts a link to classic talent calculators",
     "!map": "Posts a link to a high resolution map of classic wow",
     "!classicresources": "Posts a link to an extensive list of classic resources",
-    "!wowmusic": "Postsa link to a wow soundtrack",
+    "!wowmusic": "Posts a link to the wow soundtrack",
     "!reddit": "Posts a link to the classicwow subreddit",
-    "!streams": "Posts url to a list of wow streams on twitch",
-    "!duckit search query": "Search DuckDuckGo for your search query",
+    "!streams": "Posts a link to the list of wow streams on twitch",
+    "!duckit search query": "Searches DuckDuckGo for your search query",
     "!groovy": "Posts a help message regarding groovy"
     }
 

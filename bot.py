@@ -50,8 +50,9 @@ async def on_message(message):
             embed.add_field(name=f"{key}", value=f"{val}")
         await message.channel.send(content=None, embed=embed)
     elif message.content.lower() == '!groovy':
-        msg = f"-play youtube_link to play a youtube video's audio, -stop to stop playing audio. "\
-            f"-help to open groovy help"
+        msg = f"-play youtube_link to play a youtube video's audio.\n" \
+            f"-stop to stop playing audio.\n"\
+            f"-help to get further help from Groovy.\n"
         await message.channel.send(msg)
     elif message.content.startswith('!duckit'):
         keywords = message.content.split()

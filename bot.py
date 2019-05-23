@@ -27,7 +27,6 @@ blue_tracker = "https://classic.wowhead.com/bluetracker"
 
 @client.event
 async def on_message(message):
-    server_id = client.get_guild(114689338972831746)
     channel_id = client.get_channel(580544385196883978)
 
     if message.author == client.user:
@@ -37,8 +36,6 @@ async def on_message(message):
         author = message.author.mention
         msg = f'Hello {author}, type !commands for available commands.'
         await message.channel.send(msg)
-    elif message.content == "!users":
-        await message.channel.send(f"{channel_id.member_count} members in {channel_id.name}")
     elif message.content.lower() == '!groovy':
         msg = f"-play youtube_link to play a youtube video's audio, -stop to stop playing audio. "\
             f"-help to open groovy help"

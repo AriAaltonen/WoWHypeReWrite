@@ -99,13 +99,17 @@ async def on_message(message):
     elif message.content.lower() == "!release":
         msg = f'{time_to_release}.'
         await message.channel.send(msg)
-    elif message.content.lower() == '!druidguide' and message.author.id == "114689178028998657":
+    elif message.content.lower() == '!druidguide': # and message.author.id == "114689178028998657":
         msg = f"https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/\n{client.logs_from(message.channel)}"
         await message.channel.send(msg)
     elif message.content.lower() == '!clear' and message.author.id == "114689178028998657":
-        tmp = await client.message.channel.send('Clearing messages...')
-        async for msg in client.logs_from(message.channel):
-            await message.channel.message.delete(msg)
+        @client.command()
+        async def echo(ctx, *, msg):
+            await ctx.send(msg)
+            await ctx.message.delete()
+        #tmp = await client.message.channel.send('Clearing messages...')
+        #async for msg in client.logs_from(message.channel):
+        #    await message.channel.message.delete(msg)
 
 
 @client.event

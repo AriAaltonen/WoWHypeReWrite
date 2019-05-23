@@ -103,7 +103,6 @@ async def on_message(message):
         msg = "https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"
         await message.channel.send(msg)
     elif message.content.lower() == '!clear' and message.author.id == "114689178028998657":
-        tmp = await client.smessage.channel.send('Clearing messages...')
         async for msg in client.logs_from(message.channel):
             await client.delete_message(msg)
 

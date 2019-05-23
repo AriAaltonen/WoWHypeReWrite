@@ -100,10 +100,12 @@ async def on_message(message):
         msg = f'{time_to_release}.'
         await message.channel.send(msg)
     elif message.content.lower() == '!druidguide' and message.author.id == "114689178028998657":
-        msg = "https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"
+        msg = f"https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/\n{client.logs_from(message.channel)}"
         await message.channel.send(msg)
     elif message.content.lower() == '!clear' and message.author.id == "114689178028998657":
-        await message.channel.purge(limit=25)
+        tmp = await client.message.channel.send('Clearing messages...')
+        async for msg in client.logs_from(message.channel):
+            await client.(msg)
 
 
 @client.event

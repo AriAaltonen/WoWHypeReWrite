@@ -47,25 +47,6 @@ async def on_message(message):
         author = message.author.mention
         msg = f'Hello {author}, type !commands for available commands.'
         await message.channel.send(msg)
-    elif message.content.startswith("!stats"):
-        keywords = message.content.split()
-        kw_string = ""
-        length = len(keywords)
-        for i in range(length)[1:]:
-            kw_string += f"{keywords[i]}+"
-        url = f'https://classic.wowhead.com/item={kw_string[:-1]}&xml'
-        r = requests.get(url)
-        response_dict = xmltodict.parse(r.content)
-        jsone = response_dict['wowhead']['item']['json']
-        item_json = f'{{{jsone}}}'
-        jsondicte = json.loads(item_json)
-        name = f'{jsondicte["name"]}'
-        response_str = f"Required level to use {name[1:]} is {jsondicte['reqlevel']}, iLevel is {jsondicte['level']}."
-        if not requests.get('error'):
-            msg = f'{response_str}'
-        else:
-            msg = "Item not found"
-        await message.channel.send(msg)
     elif message.content == "!commands":
         embed = discord.Embed(title="WoWHypeBot's commands", description="Here are all of the WoWHypeBot's commands.")
         for key, val in command_list_dict.items():
@@ -92,7 +73,15 @@ async def on_message(message):
         for i in range(length)[1:]:
             kw_string += f"{keywords[i]}+"
         url = f'https://classic.wowhead.com/search?q={kw_string[:-1]}'
-        msg = f'{url}'
+        surl = f'https://classic.wowhead.com/item={kw_string[:-1]}&xml'
+        r = requests.get(surl)
+        response_dict = xmltodict.parse(r.content)
+        jsone = response_dict['wowhead']['item']['json']
+        item_json = f'{{{jsone}}}'
+        jsondicte = json.loads(item_json)
+        name = f'{jsondicte["name"]}'
+        response_str = f"Required level to use {name[1:]} is {jsondicte['reqlevel']}, iLevel is {jsondicte['level']}."
+        msg = f'{response_str}\n{url}'
         await message.channel.send(msg)
     elif message.content.lower() == '!blues':
         msg = f"{blue_tracker}"

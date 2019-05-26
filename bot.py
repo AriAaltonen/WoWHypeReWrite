@@ -12,7 +12,7 @@ command_list_dict = {
     "!hello": "Greets the user.",
     "!commands": "Embeds this view to channel",
     "!release": "Posts the time to classic release",
-    "!wowhead search query": "Searches WoWHead for your search query",
+    "!wowhead keywords": "Searches WoWHead for given keywords",
     "!classic": "Posts a link to classic guides",
     "!talents": "Posts a link to classic talent calculators",
     "!map": "Posts a link to a high resolution map of classic wow",
@@ -20,8 +20,10 @@ command_list_dict = {
     "!wowmusic": "Posts a link to the wow soundtrack",
     "!reddit": "Posts a link to the classicwow subreddit",
     "!streams": "Posts a link to the list of wow streams on twitch",
-    "!duckit search query": "Searches DuckDuckGo for your search query",
-    "!groovy": "Posts a help message regarding groovy"
+    "!duckit keywords": "Searches DuckDuckGo for given keywords",
+    "!groovy": "Posts a help message regarding groovy",
+    "!stats": "Posts a message stating item's required level and iLevel",
+    "!youtube keywords": "Searches youtube for given keywords"
     }
 
 now = datetime.datetime.now()

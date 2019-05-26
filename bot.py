@@ -85,6 +85,15 @@ async def on_message(message):
         url = f'{duckduckgo}{kw_string[:-1]}'
         msg = f'{url}'
         await message.channel.send(msg)
+    elif message.content.startswith('!youtube'):
+        keywords = message.content.split()
+        kw_string = ""
+        length = len(keywords)
+        for i in range(length)[1:]:
+            kw_string += f"{keywords[i]}+"
+        url = f'"https://www.youtube.com/results?search_query="{kw_string[:-1]}'
+        msg = f'{url}'
+        await message.channel.send(msg)
     elif message.content.startswith('!wowhead'):
         keywords = message.content.split()
         kw_string = ""

@@ -61,7 +61,7 @@ async def on_message(message):
         jsondicte = json.loads(item_json)
         name = f'{jsondicte["name"]}'
         response_str = f"Required level to use {name[1:]} is {jsondicte['reqlevel']}, iLevel is {jsondicte['level']}."
-        if not requests.get(url).get("error"):
+        if not response_dict.get("wowhead").get("error"):
             msg = f'{response_str}'
         else:
             msg = "Item not found"

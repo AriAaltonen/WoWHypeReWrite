@@ -61,7 +61,10 @@ async def on_message(message):
         jsondicte = json.loads(item_json)
         name = f'{jsondicte["name"]}'
         response_str = f"Required level to use {name[1:]} is {jsondicte['reqlevel']}, iLevel is {jsondicte['level']}."
-        msg = f'{response_str}'
+        if not requests.get('error'):
+            msg = f'{response_str}'
+        else:
+            msg = "Item not found"
         await message.channel.send(msg)
     elif message.content == "!commands":
         embed = discord.Embed(title="WoWHypeBot's commands", description="Here are all of the WoWHypeBot's commands.")

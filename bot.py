@@ -56,12 +56,12 @@ async def on_message(message):
         url = f'https://classic.wowhead.com/item={kw_string[:-1]}&xml'
         r = requests.get(url)
         response_dict = xmltodict.parse(r.content)
-        jsone = response_dict['wowhead']['item']['json']
-        item_json = f'{{{jsone}}}'
-        jsondicte = json.loads(item_json)
-        name = f'{jsondicte["name"]}'
-        response_str = f"Required level to use {name[1:]} is {jsondicte['reqlevel']}, iLevel is {jsondicte['level']}."
         if not response_dict.get("wowhead").get("error"):
+            jsone = response_dict['wowhead']['item']['json']
+            item_json = f'{{{jsone}}}'
+            jsondicte = json.loads(item_json)
+            name = f'{jsondicte["name"]}'
+            response_str = f"Required level to use {name[1:]} is {jsondicte['reqlevel']}, iLevel is {jsondicte['level']}."
             msg = f'{response_str}'
         else:
             msg = "Item not found"

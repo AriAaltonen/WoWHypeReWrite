@@ -36,6 +36,7 @@ wow_streams = "https://www.twitch.tv/directory/game/World%20of%20Warcraft"
 reddit_url = "https://www.reddit.com/r/classicwow/"
 duckduckgo = "https://duckduckgo.com/?q="
 blue_tracker = "https://classic.wowhead.com/bluetracker"
+delta = release_date - now
 
 
 @client.event
@@ -130,7 +131,8 @@ async def on_message(message):
         msg = "https://classic.wowhead.com/talent-calc"
         await message.channel.send(msg)
     elif message.content.lower() == "!release":
-        msg = f'{time_to_release}.'
+        msg = f'{delta.days} to release.'
+        # msg = f'{time_to_release}.'
         await message.channel.send(msg)
     elif message.content.lower() == '!druidguide':
         msg = f"https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"

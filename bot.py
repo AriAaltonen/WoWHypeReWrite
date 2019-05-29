@@ -28,7 +28,7 @@ command_list_dict = {
     }
 
 now = datetime.strptime(str(f"{datetime.now().year}-{datetime.now().month}-{datetime.now().day}"), '%Y-%m-%d')
-release_date = datetime.datetime(2019, 8, 27)
+release_date = datetime(2019, 8, 27)
 r = relativedelta.relativedelta(release_date, now)
 time_to_release = f'{r.months} months and {r.days} days to release.'
 wow_map_url = "https://i.imgur.com/DlKMA5H.jpg"

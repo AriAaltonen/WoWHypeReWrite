@@ -1,9 +1,10 @@
 import discord
-import datetime
 import os
 import requests
 import xmltodict
 import json
+from datetime import datetime
+from dateutil import relativedelta
 
 token = os.environ.get('token')
 client = discord.Client()
@@ -26,9 +27,10 @@ command_list_dict = {
     "!youtube keywords": "Searches youtube for given keywords"
     }
 
-now = datetime.datetime.now()
+now = datetime.strptime(str(f"{datetime.now().year}-{datetime.now().month}-{datetime.now().day}"), '%Y-%m-%d')
 release_date = datetime.datetime(2019, 8, 27)
-time_to_release = f'{release_date.month - now.month} months and {release_date.day - now.day} days to release'
+r = relativedelta.relativedelta(release_date, now)
+time_to_release = f'{r.months} months and {r.days} days to release.'
 wow_map_url = "https://i.imgur.com/DlKMA5H.jpg"
 classic_resources = "https://barrens.chat/viewtopic.php?t=1091"
 wow_soundtrack = "https://youtu.be/gQFOLOur1jM"
@@ -36,7 +38,6 @@ wow_streams = "https://www.twitch.tv/directory/game/World%20of%20Warcraft"
 reddit_url = "https://www.reddit.com/r/classicwow/"
 duckduckgo = "https://duckduckgo.com/?q="
 blue_tracker = "https://classic.wowhead.com/bluetracker"
-delta = release_date - now
 
 
 @client.event
@@ -131,8 +132,7 @@ async def on_message(message):
         msg = "https://classic.wowhead.com/talent-calc"
         await message.channel.send(msg)
     elif message.content.lower() == "!release":
-        msg = f'{delta.days} days to release.'
-        # msg = f'{time_to_release}.'
+        msg = f'{time_to_release}.'
         await message.channel.send(msg)
     elif message.content.lower() == '!druidguide':
         msg = f"https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"

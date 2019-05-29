@@ -131,7 +131,7 @@ async def on_message(message):
         msg = "https://classic.wowhead.com/talent-calc"
         await message.channel.send(msg)
     elif message.content.lower() == "!release":
-        msg = f'{delta.days} to release.'
+        msg = f'{delta.days} days to release.'
         # msg = f'{time_to_release}.'
         await message.channel.send(msg)
     elif message.content.lower() == '!druidguide':

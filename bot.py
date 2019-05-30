@@ -27,10 +27,7 @@ command_list_dict = {
     "!youtube keywords": "Searches youtube for given keywords"
     }
 
-now = datetime.strptime(str(f"{datetime.now().year}-{datetime.now().month}-{datetime.now().day}"), '%Y-%m-%d')
 release_date = datetime(2019, 8, 27)
-r = relativedelta.relativedelta(release_date, now)
-time_to_release = f'{r.months} months and {r.days} days to release.'
 wow_map_url = "https://i.imgur.com/DlKMA5H.jpg"
 classic_resources = "https://barrens.chat/viewtopic.php?t=1091"
 wow_soundtrack = "https://youtu.be/gQFOLOur1jM"
@@ -163,7 +160,10 @@ async def on_message(message):
         await message.channel.send(msg)
 
     elif message.content.lower() == "!release":
-        msg = f'{time_to_release}.'
+        now = datetime.now().date()
+        r = relativedelta.relativedelta(release_date, now)
+        msg = f'{r.months} months and {r.days} days to release.'
+
         await message.channel.send(msg)
 
     elif message.content.lower() == '!druidguide':

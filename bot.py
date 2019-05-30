@@ -24,17 +24,20 @@ command_list_dict = {
     "!duckit keywords": "Searches DuckDuckGo for given keywords",
     "!groovy": "Posts a help message regarding groovy",
     "!stats": "Posts a message stating item's required level and iLevel",
-    "!youtube keywords": "Searches youtube for given keywords"
+    "!youtube keywords": "Searches youtube for given keywords",
+    "!rwowhead keywords": "Searches retail WoWHead for given keywords"
     }
 
 release_date = datetime(2019, 8, 27)
-wow_map_url = "https://i.imgur.com/DlKMA5H.jpg"
 classic_resources = "https://barrens.chat/viewtopic.php?t=1091"
 wow_soundtrack = "https://youtu.be/gQFOLOur1jM"
 wow_streams = "https://www.twitch.tv/directory/game/World%20of%20Warcraft"
-reddit_url = "https://www.reddit.com/r/classicwow/"
-duckduckgo = "https://duckduckgo.com/?q="
 blue_tracker = "https://classic.wowhead.com/bluetracker"
+reddit_url = "https://www.reddit.com/r/classicwow/"
+duckduckgo_url = "https://duckduckgo.com/?q="
+cwowhead_url = "https://classic.wowhead.com/search?q="
+wow_map_url = "https://i.imgur.com/DlKMA5H.jpg"
+rwowhead_url = "https://www.wowhead.com/search?q="
 
 
 @client.event
@@ -96,7 +99,7 @@ async def on_message(message):
         for i in range(length)[1:]:
             kw_string += f"{keywords[i]}+"
         
-        url = f'{duckduckgo}{kw_string[:-1]}'
+        url = f'{duckduckgo_url}{kw_string[:-1]}'
         msg = f'{url}'
 
         await message.channel.send(msg)
@@ -114,6 +117,19 @@ async def on_message(message):
 
         await message.channel.send(msg)
 
+    elif message.content.startswith('!rwowhead'):
+        keywords = message.content.split()
+        kw_string = ""
+        length = len(keywords)
+
+        for i in range(length)[1:]:
+            kw_string += f"{keywords[i]}+"
+
+        url = f'{rwowhead_url}{kw_string[:-1]}'
+        msg = f'{url}'
+
+        await message.channel.send(msg)
+
     elif message.content.startswith('!wowhead'):
         keywords = message.content.split()
         kw_string = ""
@@ -122,7 +138,7 @@ async def on_message(message):
         for i in range(length)[1:]:
             kw_string += f"{keywords[i]}+"
         
-        url = f'https://classic.wowhead.com/search?q={kw_string[:-1]}'
+        url = f'{cwowhead_url}{kw_string[:-1]}'
         msg = f'{url}'
 
         await message.channel.send(msg)

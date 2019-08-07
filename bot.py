@@ -175,27 +175,16 @@ async def on_message(message):
         msg = "https://classic.wowhead.com/talent-calc"
         await message.channel.send(msg)
     elif message.content.lower() == "!test":
-        now2 = datetime.now()
-        print(now2)
-        r2 = relativedelta.relativedelta(release_date, now2)
-        print(r2)
-        print(r2.hours)
-        if r2.hours > 0:
-            r3 = {r2.days}+1
-            a = f'{r2.months} months and {r2.days} {r3}days to release.A'
-            print(a)
-        elif r2.hours == 0:
-            a = f'{r2.months} months and {r2.days} days to release.B'
-            print(a)
-    elif message.content.lower() == "!release":
-        now = datetime.now().date()
+        now = datetime.now()
         r = relativedelta.relativedelta(release_date, now)
-        if r.hours > 0:
-            msg = f'{r.months} months and {r.days} days to release.'
-        elif r.hours == 0:
-            msg = f'{r.months} months and {r.days} days to release.'
+        r2 = f'{r.months} months, {r.days} days and {r.hours} hours to release.'
+        print(r2)
+    elif message.content.lower() == "!release":
+        now = datetime.now()
+        r = relativedelta.relativedelta(release_date, now)
+        print(r.hours)
+        msg = f'{r.months} months, {r.days} days and {r.hours} hours to release.'
         await message.channel.send(msg)
-
     elif message.content.lower() == '!druidguide':
         msg = f"https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"
         await message.channel.send(msg)

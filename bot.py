@@ -175,15 +175,17 @@ async def on_message(message):
         msg = "https://classic.wowhead.com/talent-calc"
         await message.channel.send(msg)
     elif message.content.lower() == "!test":
-        now = datetime.now().date()
-        print(now)
         now2 = datetime.now()
         print(now2)
         r2 = relativedelta.relativedelta(release_date, now2)
         print(r2)
         print(r2.hours)
-        print(r2.hour)
-        print(now2.hour)
+        if r2.hours > 0:
+            a = f'{r2.months} months and {r2.days+1} days to release.'
+            print(a)
+        elif r2.hours == 0:
+            a = f'{r2.months} months and {r2.days} days to release.'
+            print(a)
     elif message.content.lower() == "!release":
         now = datetime.now().date()
         r = relativedelta.relativedelta(release_date, now)

@@ -176,8 +176,11 @@ async def on_message(message):
         await message.channel.send(msg)
     elif message.content.lower() == "!test":
         now = datetime.now()
+        now2 = datetime.now().date()
+        r3 = relativedelta.relativedelta(release_date, now2)
+        print(r3)
         r = relativedelta.relativedelta(release_date, now)
-        r2 = f'{r.months} months, {r.days} days and {r.hours} hours to release.'
+        r2 = f'{r3.months} months, {r3.days} days and {r.hours} hours to release.'
         print(r2)
     elif message.content.lower() == "!release":
         now = datetime.now()

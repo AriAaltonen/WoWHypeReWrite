@@ -174,19 +174,10 @@ async def on_message(message):
     elif message.content.lower() == '!talents':
         msg = "https://classic.wowhead.com/talent-calc"
         await message.channel.send(msg)
-    elif message.content.lower() == "!test":
-        now = datetime.now()
-        now2 = datetime.now().date()
-        r3 = relativedelta.relativedelta(release_date, now2)
-        print(r3)
-        r = relativedelta.relativedelta(release_date, now)
-        r2 = f'{r3.months} months, {r3.days} days and {r.hours} hours to release.'
-        print(r2)
     elif message.content.lower() == "!release":
-        now = datetime.now()
+        now = datetime.now().date()
         r = relativedelta.relativedelta(release_date, now)
-        print(r.hours)
-        msg = f'{r.months} months, {r.days} days and {r.hours} hours to release.'
+        msg = f'{r.months} months and {r.days} days  to release.'
         await message.channel.send(msg)
     elif message.content.lower() == '!druidguide':
         msg = f"https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"

@@ -178,6 +178,10 @@ async def on_message(message):
     elif message.content.lower() == "!release":
         now = datetime.now().date()
         r = relativedelta.relativedelta(release_date, now)
+        print(r.hours)
+        print(r.hour)
+        print(r.days+1)
+        print(r.days)
         if r.hours > 0:
             r.days = (r.days+1)
             msg = f'{r.months} months and {r.days} days to release.'

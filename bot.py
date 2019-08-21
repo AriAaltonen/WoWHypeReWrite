@@ -25,7 +25,8 @@ command_list_dict = {
     "!groovy": "Posts a help message regarding groovy",
     "!stats": "Posts a message stating item's required level and iLevel",
     "!youtube keywords": "Searches youtube for given keywords",
-    "!rwowhead keywords": "Searches retail WoWHead for given keywords"
+    "!rwowhead keywords": "Searches retail WoWHead for given keywords",
+    "!dungeons": "Posts a link to a world map with dungeons marked"
     }
 
 release_date = datetime(2019, 8, 27)
@@ -38,6 +39,7 @@ duckduckgo_url = "https://duckduckgo.com/?q="
 cwowhead_url = "https://classic.wowhead.com/search?q="
 wow_map_url = "https://i.imgur.com/DlKMA5H.jpg"
 rwowhead_url = "https://www.wowhead.com/search?q="
+dungeons_url = "https://i.imgur.com/8BtEi2I.jpg"
 
 
 @client.event
@@ -149,6 +151,10 @@ async def on_message(message):
 
     elif message.content.lower() == '!reddit':
         msg = f"{reddit_url}"
+        await message.channel.send(msg)
+
+    elif message.content.lower() == '!dungeons':
+        msg = f"{dungeons_url}"
         await message.channel.send(msg)
 
     elif message.content.lower() == '!streams':

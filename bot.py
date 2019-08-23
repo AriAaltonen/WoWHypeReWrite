@@ -183,7 +183,7 @@ async def on_message(message):
     elif message.content.lower() == "!release":
         now = datetime.now().date()
         r = relativedelta.relativedelta(release_date, now)
-        msg = f'{r.months} months and {r.days} days  to release.'
+        msg = f'{r.days} days to release.'
         await message.channel.send(msg)
     elif message.content.lower() == '!druidguide':
         msg = f"https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"

@@ -29,7 +29,7 @@ command_list_dict = {
     "!dungeons": "Posts a link to a world map with dungeons marked"
     }
 
-release_date = datetime(2019, 8, 27)
+release_date = datetime(2019, 8, 27, 1, 0, 0)
 classic_resources = "https://barrens.chat/viewtopic.php?t=1091"
 wow_soundtrack = "https://youtu.be/gQFOLOur1jM"
 wow_streams = "https://www.twitch.tv/directory/game/World%20of%20Warcraft"
@@ -181,9 +181,9 @@ async def on_message(message):
         msg = "https://classic.wowhead.com/talent-calc"
         await message.channel.send(msg)
     elif message.content.lower() == "!release":
-        now = datetime.now().date()
+        now = datetime.now()
         r = relativedelta.relativedelta(release_date, now)
-        msg = f'{r.days} days to release.'
+        msg = f'{r.days} days, {r.hours} hours, {r.minutes} minutes and {r.seconds} seconds to release.'
         await message.channel.send(msg)
     elif message.content.lower() == '!druidguide':
         msg = f"https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"

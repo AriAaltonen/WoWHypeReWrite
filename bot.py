@@ -183,8 +183,12 @@ async def on_message(message):
     elif message.content.lower() == "!release":
         now = datetime.now()
         r = relativedelta.relativedelta(release_date, now)
-        msg = f'{r.days} days, {r.hours} hours, {r.minutes} minutes and {r.seconds} seconds to release.'
-        await message.channel.send(msg)
+        if r.hours != 0 and r.seconds != 0:
+            msg = f'{r.days} days, {r.hours} hours, {r.minutes} minutes and {r.seconds} seconds to release.'
+            await message.channel.send(msg)
+        elif r.hours == 0 and r.seconds == 0:
+            msg = "Classic has been launched!"
+            await message.channel.send(msg)
     elif message.content.lower() == '!druidguide':
         msg = f"https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"
         await message.channel.send(msg)

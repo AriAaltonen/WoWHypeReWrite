@@ -44,7 +44,6 @@ dungeons_url = "https://i.imgur.com/8BtEi2I.jpg"
 
 @client.event
 async def on_message(message):
-    channel_id = client.get_channel(580544385196883978)
 
     if message.author == client.user:
         return
@@ -52,8 +51,6 @@ async def on_message(message):
     if message.content == '!hello':
         author = message.author.mention
         msg = f'Hello {author}, type !commands for available commands.'
-
-        await message.channel.send(msg)
 
     elif message.content.startswith("!stats"):
         keywords = message.content.split()
@@ -77,8 +74,6 @@ async def on_message(message):
         else:
             msg = "Item not found"
     
-        await message.channel.send(msg)
-
     elif message.content == "!commands":
         embed = discord.Embed(title="WoWHypeBot's commands", description="Here are all of the WoWHypeBot's commands.")
         for key, val in command_list_dict.items():
@@ -91,8 +86,6 @@ async def on_message(message):
             f"-stop to stop playing audio.\n"\
             f"-help to get further help from Groovy.\n"
 
-        await message.channel.send(msg)
-
     elif message.content.startswith('!duckit'):
         keywords = message.content.split()
         kw_string = ""
@@ -103,8 +96,6 @@ async def on_message(message):
         
         url = f'{duckduckgo_url}{kw_string[:-1]}'
         msg = f'{url}'
-
-        await message.channel.send(msg)
 
     elif message.content.startswith('!youtube'):
         keywords = message.content.split()
@@ -117,8 +108,6 @@ async def on_message(message):
         url = f'"https://www.youtube.com/results?search_query="{kw_string[:-1]}'
         msg = f'{url}'
 
-        await message.channel.send(msg)
-
     elif message.content.startswith('!rwowhead'):
         keywords = message.content.split()
         kw_string = ""
@@ -129,8 +118,6 @@ async def on_message(message):
 
         url = f'{rwowhead_url}{kw_string[:-1]}'
         msg = f'{url}'
-
-        await message.channel.send(msg)
 
     elif message.content.startswith('!wowhead'):
         keywords = message.content.split()
@@ -143,43 +130,33 @@ async def on_message(message):
         url = f'{cwowhead_url}{kw_string[:-1]}'
         msg = f'{url}'
 
-        await message.channel.send(msg)
-
     elif message.content.lower() == '!blues':
         msg = f"{blue_tracker}"
-        await message.channel.send(msg)
 
     elif message.content.lower() == '!reddit':
         msg = f"{reddit_url}"
-        await message.channel.send(msg)
 
     elif message.content.lower() == '!dungeons':
         msg = f"{dungeons_url}"
-        await message.channel.send(msg)
 
     elif message.content.lower() == '!streams':
         msg = f"{wow_streams}"
-        await message.channel.send(msg)
 
     elif message.content.lower() == '!wowmusic':
         msg = f"{wow_soundtrack}"
-        await message.channel.send(msg)
 
     elif message.content.lower() == '!map':
         msg = f"{wow_map_url}"
-        await message.channel.send(msg)
 
     elif message.content.lower() == '!classicresources':
         msg = f"{classic_resources}"
-        await message.channel.send(msg)
 
     elif message.content.lower() == '!classic':
         msg = "https://classic.wowhead.com/guides/classic-wow-classes-and-talent-overview"
-        await message.channel.send(msg)
 
     elif message.content.lower() == '!talents':
         msg = "https://classic.wowhead.com/talent-calc"
-        await message.channel.send(msg)
+
     elif message.content.lower() == "!release":
         now = datetime.now()
         r = relativedelta.relativedelta(release_date, now)
@@ -187,10 +164,11 @@ async def on_message(message):
             msg = f'{r.days} days, {r.hours} hours, {r.minutes} minutes and {r.seconds} seconds to release.'
         else:
             msg = "Classic has been launched!"
-        await message.channel.send(msg)
+
     elif message.content.lower() == '!druidguide':
         msg = f"https://www.warcrafttavern.com/guides/taladrils-treatise-on-druid-tanking-in-vanilla/"
-        await message.channel.send(msg)
+
+    await message.channel.send(msg)
 
 
 @client.event
